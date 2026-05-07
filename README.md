@@ -1,26 +1,29 @@
-# Dethikiemthu
+﻿# BTLkiemthu
 
-Bài tập Kiểm thử (Python) — chạy bộ `unittest` trong một file duy nhất.
+Bài tập Kiểm thử (Python) sử dụng `unittest` (standard library).
+
+- Implementations: `src/services.py`
+- Test suite: `tests/test_services.py`
 
 ## Yêu cầu
 - Python 3.11+
 - Không có thư viện ngoài (chỉ dùng standard library)
 
 ## Cách chạy
-Trong thư mục project:
-
-```powershell
-c:/Python/KiemThuApp/.venv/Scripts/python.exe BTLkiemthu.py
-```
-
-Hoặc nếu bạn đang dùng Python hệ thống:
+Trong thư mục repo:
 
 ```powershell
 python BTLkiemthu.py
 ```
 
+Hoặc chạy trực tiếp unittest discovery:
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
 ## Ghi chú
-- Kết quả `OK (expected failures=3)` là bình thường: 3 test negative được đánh dấu `expectedFailure` để minh hoạ lỗi alpha (cố ý).
+- Không cần thư viện ngoài.
 
 ## Severity (tham khảo)
 
@@ -30,3 +33,4 @@ python BTLkiemthu.py
 | Major | Booking tạo < 7 ngày không truy xuất/xác nhận được |
 | Minor | Airline data thiếu một phần (một số hãng trả rỗng) |
 | Trivial | UI/format |
+

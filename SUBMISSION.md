@@ -1,4 +1,4 @@
-# BÀI LÀM CUỐI KỲ - SOFTWARE TESTING FOUNDATIONS
+﻿# BÀI LÀM CUỐI KỲ - SOFTWARE TESTING FOUNDATIONS
 
 ## CÂU 1: PHÂN TÍCH HỆ THỐNG (2.0 điểm)
 
@@ -42,8 +42,8 @@
 | 10 | Hotel | Kiểm tra giá với `nights=1` | Giá = đơn giá x 1 đêm | `900000` | PASS | Boundary |
 | 11 | Air | Đo thời gian tìm chuyến theo địa điểm | < 50ms | 4ms | PASS | Performance |
 | 12 | Search & Plan | Đo thời gian tìm kiếm toàn hệ thống | < 50ms | 6ms | PASS | Performance |
-| 13 | Air | Truy xuất booking mới (<7 ngày) trong Alpha | Truy xuất được | Không truy xuất được | FAIL | Functional |
-| 14 | Air/API | Lấy danh sách hãng từ đối tác cụ thể | Trả dữ liệu đầy đủ | Một số hãng trả rỗng | FAIL | Integration/Negative |
+| 13 | Air | Xác nhận booking tạo trong vòng 7 ngày | Truy xuất được | Không truy xuất được | FAIL | Functional |
+| 14 | Air | Lấy danh sách hãng từ đối tác cụ thể | Trả dữ liệu đầy đủ | Một số hãng trả rỗng | FAIL | Integration |
 | 15 | Search & Plan | Tìm kiếm theo địa điểm giờ cao điểm | < 50ms | Timeout | FAIL | Performance |
 
 ---
@@ -86,6 +86,7 @@ python -m unittest discover -s tests -v
 ### 3) Phân loại mức độ lỗi
 
 - **Critical**: Timeout tìm kiếm theo địa điểm (ảnh hưởng chức năng lõi tìm kiếm)
-- **Major**: Một số hãng không trả dữ liệu API (ảnh hưởng phạm vi kết quả)
-- **Minor**: Không truy xuất booking mới do điều kiện lọc ngày sai ở một nhánh xử lý
+- **Major**: Booking tạo < 7 ngày không truy xuất/xác nhận được (ảnh hưởng truy xuất/xác nhận booking mới)
+- **Minor**: Một số hãng không trả dữ liệu API (ảnh hưởng phạm vi kết quả)
 - **Trivial**: Sai format thông báo/nhãn hiển thị (nếu có)
+

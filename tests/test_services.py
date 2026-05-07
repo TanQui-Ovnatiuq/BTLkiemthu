@@ -89,6 +89,11 @@ class TestSearchPlanService(unittest.TestCase):
         elapsed = time.perf_counter() - start
         self.assertLess(elapsed, 0.05)
 
+    def test_optimize_itinerary_negative_missing_required_key(self):
+        invalid_plan = [{"day": 1, "time": "08:00"}]
+        with self.assertRaises(ValueError):
+            self.search.optimize_itinerary(invalid_plan)
+
 
 if __name__ == "__main__":
     unittest.main()

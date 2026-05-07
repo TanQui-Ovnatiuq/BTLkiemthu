@@ -175,5 +175,9 @@ class SearchPlanService:
     def optimize_itinerary(self, plan_items: list[dict[str, Any]]) -> list[dict[str, Any]]:
         if not plan_items:
             return []
+        required_keys = {"day", "time", "activity"}
+        for item in plan_items:
+            if not required_keys.issubset(item):
+                raise ValueError("each plan item must include day, time, and activity")
         unique = {(item["day"], item["time"], item["activity"]): item for item in plan_items}
         return sorted(unique.values(), key=lambda x: (x["day"], x["time"]))

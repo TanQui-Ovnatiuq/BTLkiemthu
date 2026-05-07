@@ -176,8 +176,14 @@ class SearchPlanService:
         if not plan_items:
             return []
         required_keys = {"day", "time", "activity"}
+        deduplicated: list[dict[str, Any]] = []
+        seen_keys: set[tuple[Any, Any, Any]] = set()
         for item in plan_items:
             if not required_keys.issubset(item):
                 raise ValueError("each plan item must include day, time, and activity")
-        unique = {(item["day"], item["time"], item["activity"]): item for item in plan_items}
-        return sorted(unique.values(), key=lambda x: (x["day"], x["time"]))
+            dedup_key = (item["day"], item["time"], item["activity"])
+            if dedup_key in seen_keys:
+                continue
+            seen_keys.add(dedup_key)
+            deduplicated.append(item)
+        return sorted(deduplicated, key=lambda x: (x["day"], x["time"]))

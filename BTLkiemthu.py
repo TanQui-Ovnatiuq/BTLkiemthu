@@ -12,9 +12,9 @@ TEST_CASE_TABLE = """# Module | Action | Expected Result | Actual Result | Statu
 3 Hotel | Search hotels in Los Angeles | Matching hotels returned | 1 result | PASS | Functional
 4 Hotel | Book room (Pacific Lodge, 2 nights) | Booking created | booked | PASS | Functional
 5 Search&Plan | Personalized suggestion (low+relax) | Suggestions returned | 2 suggestions | PASS | Functional
-6 Air | Confirm booking (< 7 days) | Booking confirmed | LookupError (alpha defect) | FAIL | Negative
-7 Air | Find airline Ghost Air | Airline data returned | None (alpha defect) | FAIL | Negative
-8 Air | Search flight by location (Remote Island) | Flights returned | TimeoutError (alpha defect) | FAIL | Negative
+6 Air | Xác nhận booking tạo trong vòng 7 ngày | Booking confirmed | LookupError (alpha defect) | FAIL | Integration
+7 Air | Lấy dữ liệu hãng từ đối tác cụ thể | Trả dữ liệu đầy đủ | Một số hãng trả rỗng (alpha defect) | FAIL | Integration
+8 Air | Search flight by location (Remote Island) | Flights returned | TimeoutError (alpha defect) | FAIL | Integration
 9 Air | Check flight time = 30 mins | 30 | 30 | PASS | Boundary
 10 Hotel | Check price (Desert View, 1 night) | 150 | 150 | PASS | Boundary
 11 Air | Search flight performance | < 50ms | < 50ms | PASS | Performance
